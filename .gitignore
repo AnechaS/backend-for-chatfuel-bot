@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# OS X
+.DS_Store
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+package-lock.json
+
+# vscode
+.vscode
+
+# app config
+# config/local.json
+# config/local-*.json
+# config/production.json
+# config/production-*.json
+
+server/config/*
+!server/config/default.json
+!server/config/test.json
+server/globalConfig.json
+
+# logs
+logs
+test_logs

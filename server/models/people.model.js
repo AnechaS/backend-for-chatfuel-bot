@@ -3,34 +3,51 @@ const crypto = require('crypto');
 const uniqueValidator = require('mongoose-unique-validator');
 const cf = require('../utils/chatfuel');
 
-const Schema = new mongoose.Schema(
-  {
-    _id: {
-      type: String,
-      trim: true,
-      default: () => crypto.randomBytes(8).toString('hex'),
-    },
-    firstname: {
-      type: String,
-      trim: true,
-    },
-    lastname: {
-      type: String,
-      trim: true,
-    },
-    gender: {
-      type: String,
-      trim: true,
-    },
-    pic: {
-      type: String,
-      trim: true,
-    },
+const Schema = new mongoose.Schema({
+  _id: {
+    type: String,
+    trim: true,
+    default: () => crypto.randomBytes(8).toString('hex'),
   },
-  {
-    timestamps: true,
+  firstname: {
+    type: String,
+    trim: true,
+  },
+  lastname: {
+    type: String,
+    trim: true,
+  },
+  gender: {
+    type: String,
+    trim: true,
+  },
+  pic: {
+    type: String,
+    trim: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+Schema.pre('findOneAndUpdate', async function findOneAndUpdate(next) {
+  try {
+    if (!this._update.createdAt) {
+      this._update.createdAt = new Date();
+    }
+
+    this._update.updatedAt = new Date();
+
+    return next();
+  } catch (error) {
+    return next(error);
   }
-);
+});
 
 // TODO: Fixed findOne to load chatbot users. After no value in the database
 Schema.static('get', async function (id) {

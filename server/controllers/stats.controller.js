@@ -20,9 +20,18 @@ exports.eventChatbotUsers = async function (req, res, next) {
   }
 };
 
-exports. usageChatbot = async function (req, res, next) {
+exports.usageChatbot = async function (req, res, next) {
   try {
     const response = await cf.getStats('usage', req.query);
+    return res.json(response);
+  } catch (error) {
+    return next(createError(httpStatus.SERVICE_UNAVAILABLE, error));
+  }
+};
+
+exports.chatbotUrls = async function (req, res, next) {
+  try {
+    const response = await cf.getUrlsStats(req.query);
     return res.json(response);
   } catch (error) {
     return next(createError(httpStatus.SERVICE_UNAVAILABLE, error));

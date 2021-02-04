@@ -1,5 +1,11 @@
 {
   "port": 3000,
+  "apiKey": "secret",
+  "databaseURI": "mongodb://localhost:27017/myChatbot",
+  "chatfuel": {
+    "botId": "",
+    "token": ""
+  },
   "logsFolder": "./logs",
   "jsonLogs": true
 }

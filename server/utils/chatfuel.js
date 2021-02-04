@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const querystring = require('querystring');
 const { startsWith, isEmpty, defaultsDeep } = require('lodash');
 const config = require('config');
+const moment = require('moment');
 
 const CHATFUEL_HOST = 'https://dashboard.chatfuel.com';
 const CHATFUEL_BOT_ID = config.get('chatfuel.botId');
@@ -147,7 +148,7 @@ async function getChatbotUser(id) {
  * getStats('total_users')
  * getStats('total_users', {start_date: '2020-01-01-', end_date: '2020-02-01'})
  */
-async function getStats (path, parameters) {
+async function getStats(path, parameters) {
   if (!path || typeof path !== 'string') {
     throw new Error('statistics api path is invalid');
   }
@@ -162,12 +163,24 @@ async function getStats (path, parameters) {
   return response.result || {};
 }
 
-const matchModelPaths = chatbotUser => ({
+async function getUrlsStats(parameters) {
+  const params = Object.assign({}, parameters);
+  const response = await request('/url_stats', {
+    params,
+    method: 'GET',
+  });
+
+  return response.result || {};
+}
+
+const matchModelPaths = (chatbotUser) => ({
   id: chatbotUser['messenger user id'],
   firstname: chatbotUser['first name'],
   lastname: chatbotUser['last name'],
   gender: chatbotUser['gender'],
   pic: chatbotUser['profile pic url'],
+  createdAt: moment(chatbotUser['signed up']).toDate(),
+  updatedAt: moment().toDate(),
 });
 
 module.exports = {
@@ -175,5 +188,6 @@ module.exports = {
   getChatbotUsers,
   getChatbotUser,
   getStats,
-  matchModelPaths
+  getUrlsStats,
+  matchModelPaths,
 };

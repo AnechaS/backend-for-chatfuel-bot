@@ -6,5 +6,6 @@ const router = express.Router();
 router.get('/totalChatbotUsers', authorize(), statsController.totalChatbotUsers);
 router.get('/eventChatbotUsers', authorize(), statsController.eventChatbotUsers);
 router.get('/usageChatbot', authorize(), statsController.usageChatbot);
+router.get('/chatbotUrls', authorize(), statsController.chatbotUrls);
 
 module.exports = router;

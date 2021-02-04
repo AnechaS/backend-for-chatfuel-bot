@@ -17,7 +17,7 @@ exports.seedersList = {
  * @return {Promise}
  */
 exports.connect = function () {
-  return mongoose.connect(config.get('db.uri'), { 
+  return mongoose.connect(config.get('databaseURI'), { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

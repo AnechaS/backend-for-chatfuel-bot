@@ -8,16 +8,20 @@ module.exports = function (query, queryOptions) {
       query.where(queryOptions.where);
     }
 
+    if (queryOptions.sort) {
+      query.sort(queryOptions.sort);
+    }
+
     if (queryOptions.skip) {
       query.skip(queryOptions.skip);
     }
 
-    if (queryOptions.limit && query.op !== 'count' && !queryOptions.distinct) {
+    if (
+      queryOptions.limit &&
+      query.op.indexOf('count') === -1 &&
+      !queryOptions.distinct
+    ) {
       query.limit(queryOptions.limit);
-    }
-
-    if (queryOptions.sort) {
-      query.sort(queryOptions.sort);
     }
 
     if (queryOptions.populate) {

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('config');
-const syncChatfuelBotData = require('../../../scripts/sync-chatfuel-bot-data');
+const script = require('../../../scripts/load-data');
 const cf = require('../../../utils/chatfuel');
 
 const People = require('../../../models/people.model');
@@ -77,7 +77,7 @@ afterAll(() => {
 
 describe('sync-chatfuel-bot-data', () => {
   test('run success', async () => {
-    await syncChatfuelBotData();
+    await script();
 
     const peoples = await People.find({});
     expect(peoples.length).toBe(6);
@@ -98,7 +98,7 @@ describe('sync-chatfuel-bot-data', () => {
       });
     });
 
-    await syncChatfuelBotData();
+    await script();
   });
 
   test('failed to request chatfuel bot info', async () => {
@@ -106,7 +106,7 @@ describe('sync-chatfuel-bot-data', () => {
       return Promise.reject(new Error('Request Failure Status 500'));
     });
 
-    await syncChatfuelBotData();
+    await script();
   });
 
   test('failed sometime to request chatfuel bot info', async () => {
@@ -141,7 +141,7 @@ describe('sync-chatfuel-bot-data', () => {
       return Promise.reject(new Error('Request Failure Status 500'));
     });
 
-    await syncChatfuelBotData();
+    await script();
 
     const peoples = await People.find({});
     expect(peoples.length).toBe(3);

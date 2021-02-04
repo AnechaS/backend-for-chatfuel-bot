@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.enable('trust proxy');
 // app.use(morgan('dev'));
 
-if (process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV !== 'test') {
   app.use(
     morgan('short', {
       stream: {

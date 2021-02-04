@@ -83,3 +83,4 @@ node ./scripts/sync-chatfuel-bot-data.js
 
 - API Docs
 - API Promission User Role
+- API Clase ลบข้อมูลได้หลาย id

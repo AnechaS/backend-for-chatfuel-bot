@@ -1,0 +1,43 @@
+//
+// Widget 35
+//
+
+.kt-widget35 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  .kt-widget35__content {
+    display: flex;
+    padding-bottom: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .kt-widget35__title {
+      color: kt-base-color(label, 3);
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-top: 0.55rem;
+    }
+
+    .kt-widget35__number {
+      font-weight: 600;
+      font-size: 3.5rem;
+    }
+
+    .kt-widget35__percentage {
+      color: kt-base-color(label, 3);
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    .kt-widget35__desc {
+      margin-top: auto;
+      color: kt-base-color(label, 2);
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+//
+// Custom Brand Logo
+//
+
+@import url(https://fonts.googleapis.com/css2?family=Itim&display=swap);
+
+.brand-logo {
+  width: 85px;
+  height: 25px;
+
+  > .brand-logo--text {
+    font-family: "Itim", sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+}

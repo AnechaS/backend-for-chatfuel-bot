@@ -1,0 +1,13 @@
+//
+// Custom Aside Brand
+//
+
+.kt-aside__brand {
+  .kt-aside__brand-logo {
+    .brand-logo {
+      .kt-aside--minimize & {
+        display: none;
+      }
+    }
+  }
+}

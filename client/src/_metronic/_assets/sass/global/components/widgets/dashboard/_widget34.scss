@@ -1,0 +1,48 @@
+//
+// Widget 34
+//
+
+.kt-widget34 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  .kt-widget34__content {
+    display: flex;
+    padding-bottom: 0px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    // border-bottom: 1px dashed #ebedf2;
+
+    .kt-widget34__item {
+      display: flex;
+      margin-bottom: 2.5rem;
+      align-items: center;
+
+      .kt-widget34__info {
+        flex: 1;
+
+        .kt-widget34__desc {
+          font-size: 1rem;
+          color: kt-base-color(label, 2);
+          padding-bottom: 0.5rem;
+          font-weight: 500;
+          display: block;
+        }
+
+        .kt-widget34__value {
+          height: 27px;
+          font-size: 1.4rem;
+          font-weight: 600;
+          color: kt-base-color(label, 3);
+          display: block;
+        }
+      }
+    }
+  }
+
+  .kt-widget34__table {
+  }
+}

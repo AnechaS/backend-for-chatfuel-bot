@@ -1,0 +1,200 @@
+// Custom Data table
+
+.kt-datatable {
+  $base-bg: #fff;
+  $body_cell_font_color: kt-base-color(label, 3);
+  $row-border-color: kt-base-color(shape, 1);
+  $resize-bg: $row-border-color;
+  $scrollbar_color: darken(kt-base-color(shape, 2), 3%);
+
+  &.kt-datatable__table--edit {
+    > .kt-datatable__table {
+      overflow: auto !important;
+      // Scholl Style
+      // overflow-x: auto !important;
+      // &::-webkit-scrollbar {
+      //   opacity: 0;
+      //   height: 4px;
+      //   left: 0px;
+      // }
+
+      // &::-webkit-scrollbar-track {
+      //   background: transparent;
+      // }
+
+      // &::-webkit-scrollbar-thumb {
+      //   opacity: 1;
+      //   border-radius: 4px;
+      //   height: 4px;
+      //   background: $scrollbar_color;
+      // }
+
+      // &::-webkit-scrollbar-thumb:hover,
+      // ::-webkit-scrollbar-thumb:focus {
+      //   opacity: 1;
+      //   background: $scrollbar_color;
+      // }
+
+      > .kt-datatable__head,
+      .kt-datatable__body {
+        display: grid !important;
+
+        > .kt-datatable__row {
+          display: flex !important;
+        }
+      }
+
+      > .kt-datatable__head {
+        > .kt-datatable__row {
+          > .kt-datatable__cell {
+            > span {
+              > .kt-datatable__column--name {
+                line-height: 22px;
+                margin-right: 8px;
+                float: left;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+
+              > .kt-datatable__column--type {
+                color: #a2a6b1;
+                font-size: 10px;
+                height: 22px;
+                line-height: 22px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+            }
+
+            > .kt-datatable__resizer {
+              display: inline-block;
+              width: 10px;
+              height: 100%;
+              position: absolute;
+              right: 0;
+              top: 0;
+              transform: translateX(50%);
+              z-index: 1;
+              touch-action: none;
+
+              &::before {
+                content: "";
+                position: absolute;
+                height: 30px;
+                width: 2px;
+                background-color: transparent;
+                top: 12px;
+                left: 4px;
+                transition: background-color 60ms;
+              }
+
+              &:hover::before {
+                background-color: $resize-bg;
+              }
+            }
+          }
+        }
+      }
+
+      > .kt-datatable__body {
+        > .kt-datatable__row {
+          > .kt-datatable__cell {
+            font-weight: regular;
+            white-space: nowrap;
+
+            &.kt-datatable__cell--check {
+              > span {
+                > .kt-checkbox {
+                  top: 1px;
+                }
+              }
+            }
+
+            // Row input
+            &.kt-datatable__cell--edit {
+              > span {
+                > input {
+                  padding: 0;
+                  margin: 0;
+                  border: 0;
+                  color: $body_cell_font_color;
+                  width: 100%;
+
+                  &:forcus {
+                    outline: none;
+                  }
+                }
+
+                > textarea {
+                  position: absolute;
+                  margin-top: -10px;
+                  width: 200px;
+                  height: 80px;
+                  padding: 4px;
+                  outline: none;
+                  resize: both;
+                  // border-color: #e7e8ef;
+
+                  &:forcus {
+                    outline: none;
+                  }
+                }
+
+                > select {
+                  position: absolute;
+                  margin-top: -2px;
+                  color: $body_cell_font_color;
+                  outline: none;
+                  -webkit-touch-callout: none;
+                  -webkit-user-select: none;
+                  -khtml-user-select: none;
+                  -moz-user-select: none;
+                  -ms-user-select: none;
+                  user-select: none;
+
+                  &:forcus {
+                    outline: none !important;
+                  }
+                }
+              }
+            }
+
+            > span {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          &:last-child {
+            > .kt-datatable__cell--edit {
+              > span {
+                > textarea {
+                  // margin-top: -50px;
+                  // resize: horizontal;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  > .kt-datatable__pager {
+    > .kt-datatable__pager-nav {
+      > li {
+        > .kt-datatable__pager-link {
+          border: none;
+          background-color: $base_bg;
+        }
+      }
+    }
+
+    > .kt-datatable__pager-info {
+      select {
+        width: 75px;
+      }
+    }
+  }
+}

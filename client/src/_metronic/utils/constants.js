@@ -1,0 +1,1 @@
+export const REQUEST_TOKEN_INTERVAL_ADVANCE = 0.50;

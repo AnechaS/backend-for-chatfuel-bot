@@ -1,1 +1,1 @@
-# Chatbot backend for Chatfuel
+# NodeJS backend for Chatfuel Bot

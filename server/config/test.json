@@ -1,9 +1,0 @@
-{
-  "apiKey": "hjkl",
-  "databaseURI": "mongodb://localhost:27001/jest",
-  "port": 7777,
-  "logsFolder": "./test_logs",
-  "jsonLogs": true,
-  "chatfuelBotId": "zxcv",
-  "chatfuelToken": "vbnm"
-}

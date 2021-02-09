@@ -139,7 +139,7 @@ class AsideLeft extends React.Component {
   render() {
     const {
       ulClasses,
-      // menuConfig,
+      menuConfig,
       layoutConfig,
       asideMenuAttr,
       asideClassesFromConfig,
@@ -168,7 +168,7 @@ class AsideLeft extends React.Component {
           <ul className={clsx("kt-menu__nav", ulClasses)}>
             <MenuList
               currentUrl={pathname}
-              // menuConfig={menuConfig}
+              menuConfig={menuConfig}
               layoutConfig={layoutConfig}
             />
           </ul>
@@ -179,7 +179,7 @@ class AsideLeft extends React.Component {
 }
 
 const mapStateToProps = store => ({
-  // menuConfig: store.builder.menuConfig,
+  menuConfig: store.builder.menuConfig,
   layoutConfig: store.builder.layoutConfig,
   headerLogo: builder.selectors.getLogo(store),
   asideMenuAttr: builder.selectors.getAttributes(store, { path: "aside_menu" }),

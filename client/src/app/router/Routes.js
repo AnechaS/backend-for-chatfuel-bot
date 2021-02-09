@@ -10,7 +10,8 @@ import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import { shallowEqual, useSelector } from "react-redux";
 import { useLastLocation } from "react-router-last-location";
 import HomePage from "../pages/home/HomePage";
-import LoginPage from "../pages/auth/LoginPage";
+import AuthPage from "../pages/auth/AuthPage";
+import ErrorsPage from "../pages/errors/ErrorsPage";
 import LogoutPage from "../pages/auth/Logout";
 import { LayoutContextProvider } from "../../_metronic";
 import Layout from "../../_metronic/layout/Layout";
@@ -23,7 +24,7 @@ export const Routes = withRouter(({ history }) => {
     ({ auth, urls, builder: { menuConfig } }) => ({
       menuConfig,
       isAuthorized: auth.user != null,
-      userLastLocation: routerHelpers.getLastLocation(),
+      userLastLocation: routerHelpers.getLastLocation()
     }),
     shallowEqual
   );
@@ -34,17 +35,18 @@ export const Routes = withRouter(({ history }) => {
       <Switch>
         {!isAuthorized ? (
           /* Render auth page when user at `/auth` and not authorized. */
-          <Route path="/login" component={LoginPage} />
+          <Route path="/auth" component={AuthPage} />
         ) : (
           /* Otherwise redirect to root page (`/`) */
-          <Redirect from="/login" to={userLastLocation} />
+          <Redirect from="/auth" to={userLastLocation} />
         )}
 
+        <Route path="/error" component={ErrorsPage} />
         <Route path="/logout" component={LogoutPage} />
 
         {!isAuthorized ? (
           /* Redirect to `/auth` when user is not authorized */
-          <Redirect to="/login" />
+          <Redirect to="/auth/login" />
         ) : (
           <Layout>
             <HomePage userLastLocation={userLastLocation} />

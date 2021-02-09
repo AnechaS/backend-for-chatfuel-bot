@@ -39,22 +39,22 @@ const fakeData = [
   {
     type: 1,
     text: "Amanda Anderson",
-    iconImage: "https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media/users/user1.jpg"
+    iconImage: toAbsoluteUrl("/media/users/user1.jpg")
   },
   {
     type: 1,
     text: "Kennedy Lloyd",
-    iconImage: "https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media/users/user2.jpg"
+    iconImage: toAbsoluteUrl("/media/users/user2.jpg")
   },
   {
     type: 1,
     text: "Megan Weldon",
-    iconImage: "https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media/users/user3.jpg"
+    iconImage: toAbsoluteUrl("/media/users/user3.jpg")
   },
   {
     type: 1,
     text: "Marc-André ter Stegen",
-    iconImage: "https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media/users/user4.jpg"
+    iconImage: toAbsoluteUrl("/media/users/user4.jpg")
   },
   {
     type: 0,

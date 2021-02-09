@@ -1,14 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
 import MenuSection from "./MenuSection";
 import MenuItemSeparator from "./MenuItemSeparator";
 import MenuItem from "./MenuItem";
 
-class MenuList extends React.Component {
+export default class MenuList extends React.Component {
   render() {
-    const { currentUrl, /* menuConfig, */ layoutConfig, items } = this.props;
+    const { currentUrl, menuConfig, layoutConfig } = this.props;
 
-    return items.map((child, index) => {
+    return menuConfig.aside.items.map((child, index) => {
       return (
           <React.Fragment key={`menuList${index}`}>
             {child.section && <MenuSection item={child} />}
@@ -25,9 +24,3 @@ class MenuList extends React.Component {
     });
   }
 }
-
-const mapStateToProps = (state) => ({
-  items: state.builder.menuConfig.aside.items
-})
-
-export default connect(mapStateToProps)(MenuList)

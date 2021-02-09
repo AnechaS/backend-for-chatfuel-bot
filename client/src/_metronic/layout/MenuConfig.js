@@ -18,7 +18,8 @@ export default {
         title: "Dashboard",
         root: true,
         icon: "flaticon2-graphic",
-        page: "dashboard",
+        page: "dashboard/2",
+        translate: "MENU.DASHBOARD",
         bullet: "dot"
       },
       {
@@ -33,7 +34,7 @@ export default {
         bullet: "line",
         icon: "flaticon2-cube",
         submenu: [
-          /* {
+          {
             title: "Comment",
             root: true,
             page: "database/comment"
@@ -72,16 +73,16 @@ export default {
             title: "User",
             root: true,
             page: "database/user"
-          } */
+          }
         ]
       },
-      /* {
+      {
         title: "Help",
         root: true,
         bullet: "dot",
         icon: "flaticon2-start-up",
         page: "#"
-      }, */
+      },
       { section: "Setting" },
       {
         title: "General",

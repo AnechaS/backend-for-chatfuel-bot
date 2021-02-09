@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import KTContent from "../../../_metronic/layout/KtContent";
 import SubHeader from "../../partials/layout/SubHeader";
-import ChangeUserInfo from "./ChangeUserInfo";
-import ChangePassword from "./ChangePassword";
+import LayoutBuilder from "../../component/LayoutBuilder";
+import ChangeUserInfo from "../../component/ChangeUserInfo";
+import ChangePassword from "../../component/ChangePassword";
 
 export default function SettingPage() {
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function SettingPage() {
 
       <ChangeUserInfo />
       <ChangePassword />
+      <LayoutBuilder />
     </KTContent>
   );
 }

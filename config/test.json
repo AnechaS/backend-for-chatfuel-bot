@@ -1,0 +1,23 @@
+{
+  "port": 5561,
+  "app": {
+    "apiKey": "hjkl",
+    "apiPublicKey": "abcd"
+  },
+  "logging": {
+    "folder": "test_logs",
+    "jsonLogs": true
+  },
+  "db": {
+    "uri": "mongodb://localhost:27001/jest"
+  },
+  "chatfuel": {
+    "botId": "zxcv",
+    "token": "vbnm"
+  },
+  "cloudinary": {
+    "cloudName": "21fundee",
+    "apiKey": "qwedqe",
+    "uploadPreset": "ojopi"
+  }
+}

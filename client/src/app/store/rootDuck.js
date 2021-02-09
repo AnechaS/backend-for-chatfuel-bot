@@ -1,20 +1,19 @@
 import { all } from "redux-saga/effects";
 import { combineReducers } from "redux";
 
-import { metronic } from "../../_metronic";
 import * as auth from "./ducks/auth.duck";
-import * as schemas from "./ducks/schemas.duck";
-import * as statistics from "./ducks/statistics.duck";
+import * as address from "./ducks/address.duck";
 import * as peoples from "./ducks/peoples.duck";
+import { metronic } from "../../_metronic";
 
 export const rootReducer = combineReducers({
-  builder: metronic.builder.reducer,
   auth: auth.reducer,
-  schemas: schemas.reducer,
-  statistics: statistics.reducer,
+  address: address.reducer,
   peoples: peoples.reducer,
+  i18n: metronic.i18n.reducer,
+  builder: metronic.builder.reducer
 });
 
 export function* rootSaga() {
-  yield all([auth.saga(), schemas.saga()]);
+  yield all([auth.saga()]);
 }

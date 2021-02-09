@@ -1,22 +1,19 @@
-import * as auth from "./auth.duck";
-
 export const actionTypes = {
-  LOAD_PEOPLES: "LOAD_PEOPLES",
+  PEOPLE_REQUESTED: "PEOPLE_REQUESTED"
 };
 
 const initialState = {
   count: 0,
-  rows: [],
+  items: []
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.LOAD_PEOPLES: {
-      return action.payload;
+    case actionTypes.PEOPLE_REQUESTED: {
+      const { items, count } = action.payload;
+      return { items, count };
     }
-    case auth.actionTypes.LOGOUT_USER: {
-      return initialState;
-    }
+
     default: {
       return state;
     }
@@ -24,8 +21,8 @@ export const reducer = (state = initialState, action) => {
 };
 
 export const actions = {
-  loadPeoples: (rows, count) => ({
-    type: actionTypes.LOAD_PEOPLES,
-    payload: { rows, count },
-  }),
+  requestedPeoples: ({ items, count }) => ({
+    type: actionTypes.PEOPLE_REQUESTED,
+    payload: { items, count }
+  })
 };

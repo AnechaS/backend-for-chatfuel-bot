@@ -16,7 +16,7 @@ export default function Logo({ color, colorObject, size }) {
           className="brand-logo--text"
           style={{ color: colorText, fontSize: `${size}px` }}
         >
-          {process.env.REACT_APP_NAME}
+          21วันฟันดี
         </span>
       </div>
     </>

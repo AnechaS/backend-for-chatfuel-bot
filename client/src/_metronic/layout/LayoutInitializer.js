@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { LayoutSplashScreen } from "./LayoutContext";
 import * as builder from "../ducks/builder";
 
-import { getSchemas } from "../../app/crud/schemas.crud";
-import * as schemas from "../../app/store/ducks/schemas.duck";
 /**
  * Used to synchronize current layout `menuConfig`, `layoutConfig` and
  * `htmlClassService` with redux store.
@@ -13,7 +11,7 @@ export default function LayoutInitializer({
   children,
   menuConfig,
   layoutConfig,
-  htmlClassService,
+  htmlClassService
 }) {
   const dispatch = useDispatch();
   const builderState = useSelector(({ builder }) => builder);
@@ -26,22 +24,11 @@ export default function LayoutInitializer({
     if (layoutConfig.demo !== builderState.layoutConfig.demo) {
       dispatch(builder.actions.setLayoutConfigs(layoutConfig));
     }
-  }, [dispatch, builderState.layoutConfig, layoutConfig]);
+  }, [dispatch, builderState, layoutConfig]);
 
   useEffect(() => {
     dispatch(builder.actions.setHtmlClassService(htmlClassService));
   }, [dispatch, htmlClassService]);
-
-  useEffect(() => {
-    dispatch(builder.actions.setMenuConfig(menuConfig));
-  }, [dispatch, menuConfig]);
-
-  useEffect(() => {
-    getSchemas()
-      .then(({ data }) => {
-        dispatch(schemas.actions.loadSchemas(data.results));
-      });
-  }, [dispatch]);
 
   return htmlClassService === builderState.htmlClassServiceObjects ? (
     // Render content when `htmlClassService` synchronized with redux store.

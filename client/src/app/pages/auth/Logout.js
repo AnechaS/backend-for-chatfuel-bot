@@ -3,7 +3,7 @@ import * as auth from "../../store/ducks/auth.duck";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { LayoutSplashScreen } from "../../../_metronic";
-import { logout } from "../../crud/users.crud";
+import { logout } from "../../crud/auth.crud";
 
 class Logout extends Component {
   componentDidMount() {

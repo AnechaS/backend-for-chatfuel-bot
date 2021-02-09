@@ -1,0 +1,24 @@
+{
+  "port": 3000,
+  "app": {
+    "apiKey": "",
+    "apiPublicKey": ""
+  },
+  "logging": {
+    "logsFolder": "logs",
+    "jsonLogs": true
+  },
+  "db": {
+    "uri": "mongodb://@localhost:27017/21fundee",
+    "options": {}
+  },
+  "chatfuel": {
+    "botId": "",
+    "token": ""
+  },
+  "cloudinary": {
+    "cloudName": "",
+    "apiKey": "",
+    "uploadPreset": ""
+  }
+}

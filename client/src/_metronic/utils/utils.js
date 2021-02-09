@@ -1,5 +1,4 @@
-import { has } from "lodash";
-import * as auth from "../../app/store/ducks/auth.duck";
+import { actions } from "../../app/store/ducks/auth.duck";
 
 export function removeCSSClass(ele, cls) {
   const reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
@@ -10,43 +9,41 @@ export function addCSSClass(ele, cls) {
   ele.classList.add(cls);
 }
 
-export const toAbsoluteUrl = (pathname) => process.env.PUBLIC_URL + pathname;
+export const toAbsoluteUrl = pathname => process.env.PUBLIC_URL + pathname;
 
 export function setupAxios(axios, store) {
-  axios.defaults.baseURL = process.env.REACT_APP_API_HOST;
-
   axios.interceptors.request.use(
-    (config) => {
+    config => {
       const {
-        auth: { authToken },
+        auth: { authToken }
       } = store.getState();
 
-      const { REACT_APP_API_KEY } = process.env;
-      if (REACT_APP_API_KEY) {
-        config.headers["X-API-Key"] = REACT_APP_API_KEY;
-      }
-
       if (authToken) {
-        config.headers["X-Session-Token"] = authToken;
+        config.headers.Authorization = authToken;
       }
 
       return config;
     },
-    (err) => Promise.reject(err)
+    err => Promise.reject(err)
   );
 
   axios.interceptors.response.use(
-    (response) => response,
-    (error) => {
-      if (has(error.response, "status")) {
+    response => response,
+    error => {
+      const {
+        auth: { authToken }
+      } = store.getState();
+      // check server available
+      if (typeof error.response !== "undefined") {
         if (error.response.status === 401) {
-          const {
-            auth: { authToken },
-          } = store.getState();
           if (authToken) {
-            store.dispatch(auth.actions.logout());
+            setTimeout(() => {
+              store.dispatch(actions.logout());
+            }, 250);
           }
         }
+      } else {
+        window.location.href = "/error";
       }
 
       return Promise.reject(error);

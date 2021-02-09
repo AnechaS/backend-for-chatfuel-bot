@@ -1,0 +1,59 @@
+{
+  "name": "21fundee",
+  "version": "1.0.0",
+  "private": true,
+  "keywords": [
+    "express",
+    "express-validator",
+    "mongodb",
+    "mongoose",
+    "jest",
+    "jest-mongodb",
+    "rest-api",
+    "pm2",
+    "react"
+  ],
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node ./bin/server",
+    "server-prod": "NODE_ENV=production node ./bin/server",
+    "client": "node ./bin/client",
+    "test": "jest tests --runInBand",
+    "lint": "eslint .",
+    "postinstall": "cd ./client && npm install"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.1",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-validator": "^6.3.0",
+    "http-errors": "~1.6.3",
+    "http-status": "^1.4.2",
+    "is-image": "^3.0.0",
+    "is-url": "^1.2.4",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.0",
+    "morgan": "~1.9.1",
+    "node-fetch": "^2.6.0",
+    "url": "^0.11.0",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.4.2"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^1.1.3",
+    "concurrently": "^5.2.0",
+    "eslint": "^6.7.2",
+    "faker": "^4.1.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "preset": "@shelf/jest-mongodb"
+  }
+}

@@ -2,7 +2,7 @@ import moment from "moment";
 
 export default function queryFromFilters(filters) {
   let query = {};
-  filters.forEach((filter) => {
+  filters.forEach(filter => {
     addConstraint(query, filter);
   });
   return query;
@@ -18,83 +18,54 @@ export default function queryFromFilters(filters) {
 function addConstraint(query = {}, filter) {
   switch (filter.constraint) {
     case "exists":
-      query[filter.field] = {
-        ...query[filter.field],
-        $exists: true,
-      };
+      query[filter.field] = { $exists: true };
       break;
     case "dne":
-      query[filter.field] = {
-        ...query[filter.field],
-        $exists: false,
-      };
+      query[filter.field] = { $exists: false };
       break;
     case "eq":
       query[filter.field] = filter.compareTo;
       break;
     case "neq":
-      query[filter.field] = {
-        ...query[filter.field],
-        $ne: filter.compareTo,
-      };
+      query[filter.field] = { $ne: filter.compareTo };
       break;
     case "lt":
-      query[filter.field] = {
-        ...query[filter.field],
-        $lt: filter.compareTo,
-      };
+      query[filter.field] = { $lt: filter.compareTo };
       break;
     case "lte":
-      query[filter.field] = {
-        ...query[filter.field],
-        $lte: filter.compareTo,
-      };
+      query[filter.field] = { $lte: filter.compareTo };
       break;
     case "gt":
-      query[filter.field] = {
-        ...query[filter.field],
-        $gt: filter.compareTo,
-      };
+      query[filter.field] = { $gt: filter.compareTo };
       break;
     case "gte":
-      query[filter.field] = {
-        ...query[filter.field],
-        $gte: filter.compareTo,
-      };
+      query[filter.field] = { $gte: filter.compareTo };
       break;
     case "starts":
-      query[filter.field] = {
-        $regex: `^${filter.compareTo}`,
-      };
+      query[filter.field] = { $regex: `^${filter.compareTo}` };
       break;
     case "ends":
-      query[filter.field] = {
-        $regex: `${filter.compareTo}$`,
-      };
+      query[filter.field] = { $regex: `${filter.compareTo}$` };
       break;
     case "before":
       query[filter.field] = {
-        ...query[filter.field],
-        $lte: moment
-          .utc(filter.compareTo)
-          .endOf("day")
-          .toISOString(),
+        $lte: moment(filter.compareTo)
+          .startOf("day")
+          .toDate()
       };
       break;
     case "after":
       query[filter.field] = {
-        ...query[filter.field],
-        $gte: moment
-          .utc(filter.compareTo)
-          .startOf("day")
-          .toISOString(),
+        $gte: moment(filter.compareTo)
+          .endOf("day")
+          .toDate()
       };
       break;
     case "containsString":
     case "containsNumber":
       query[filter.field] = {
         $regex: `.*${filter.compareTo}.*`,
-        $options: "i",
+        $options: "i"
       };
       break;
     case "doesNotContainString":
@@ -107,7 +78,7 @@ function addConstraint(query = {}, filter) {
     case "stringContainsString":
       query[filter.field] = {
         $regex: `.*${filter.compareTo}.*`,
-        $options: "i",
+        $options: "i"
       };
       break;
     case "keyExists":

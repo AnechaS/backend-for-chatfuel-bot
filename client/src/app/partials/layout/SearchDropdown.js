@@ -49,25 +49,25 @@ const fakeData = [
     type: 1,
     text: "Jimmy Curry",
     description: "Software Developer",
-    iconImage: "https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media/users/300_11.jpg"
+    iconImage: toAbsoluteUrl("/media/users/300_11.jpg")
   },
   {
     type: 1,
     text: "Milena Gibson",
     description: "UI Designer",
-    iconImage: "https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media/users/300_16.jpg"
+    iconImage: toAbsoluteUrl("/media/users/300_16.jpg")
   },
   {
     type: 1,
     text: "Stefan JohnStefan",
     description: "Marketing Manager",
-    iconImage: "https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media/users/300_22.jpg"
+    iconImage: toAbsoluteUrl("/media/users/300_22.jpg")
   },
   {
     type: 1,
     text: "Anna Strong",
     description: "Software Developer",
-    iconImage: "https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media/users/300_5.jpg"
+    iconImage: toAbsoluteUrl("/media/users/300_5.jpg")
   },
   {
     type: 0,

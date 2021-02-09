@@ -1,0 +1,21 @@
+//
+// Custom Widget4
+//
+
+@import url(//fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap);
+
+.kt-widget4 {
+  &.kt-widget4--no-data {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+
+    > .kt-widget4__text {
+      font-family: "Kanit", sans-serif;
+
+      font-size: 20px;
+      color: kt-base-color(label, 2);
+    }
+  }
+}

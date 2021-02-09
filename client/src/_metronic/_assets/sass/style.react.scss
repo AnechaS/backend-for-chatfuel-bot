@@ -12,6 +12,7 @@
 // 2: Bootstrap framework includes
 @import "global/integration/frameworks/bootstrap/variables";
 @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-select/sass/bootstrap-select";
 @import "global/integration/frameworks/bootstrap/bootstrap";
 @import "global/integration/frameworks/react/material-ui/general";
 
@@ -41,6 +42,7 @@
 @import "global/layout/footer/footer";
 
 // 6:  User defined custom styles includes
+@import "custom/widget4";
 @import "custom/brandlogo";
 @import "custom/brand";
 @import "custom/login";

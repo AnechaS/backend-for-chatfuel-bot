@@ -1,16 +1,10 @@
 import MockAdapter from "axios-mock-adapter";
-import mockUsers from "./mockUsers";
-import mockStats from "./mockStats";
-import mockClassPeople from "./mockClassPeople";
-import mockSchemas from "./mockSchemas";
+import mockAuth from "./mockAuth";
 
 export default function mockAxios(axios) {
   const mock = new MockAdapter(axios);
 
-  mockUsers(mock);
-  mockStats(mock);
-  mockClassPeople(mock);
-  mockSchemas(mock);
+  mockAuth(mock);
 
   return mock;
 }

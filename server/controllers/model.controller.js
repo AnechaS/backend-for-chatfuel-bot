@@ -117,9 +117,18 @@ module.exports = function (modelName) {
   };
 
   /**
-   * Delete document
+   * Delete All document
    */
-  c.delete = async function (req, res, next) {
+  c.deleteAll = async function (req, res, next) {
+    const m = model(req);
+    await m.deleteMany({});
+    return res.status(httpStatus.NO_CONTENT).end();
+  };
+
+  /**
+   * Delete document by id
+   */
+  c.deleteById = async function (req, res, next) {
     try {
       const m = model(req);
       const document = await findById(m, req.params.id);

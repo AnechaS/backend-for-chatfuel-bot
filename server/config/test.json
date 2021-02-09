@@ -4,8 +4,6 @@
   "port": 7777,
   "logsFolder": "./test_logs",
   "jsonLogs": true,
-  "chatfuel": {
-    "botId": "zxcv",
-    "token": "vbnm"
-  }
+  "chatfuelBotId": "zxcv",
+  "chatfuelToken": "vbnm"
 }

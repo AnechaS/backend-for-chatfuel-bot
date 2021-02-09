@@ -18,7 +18,7 @@ module.exports = function (query, queryOptions) {
 
     if (
       queryOptions.limit &&
-      query.op.indexOf('count') === -1 &&
+      (!query.op || (query.op && query.op.indexOf('count') === -1)) &&
       !queryOptions.distinct
     ) {
       query.limit(queryOptions.limit);

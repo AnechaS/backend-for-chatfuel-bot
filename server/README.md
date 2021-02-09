@@ -14,11 +14,12 @@ $ npm install --only=prod
 
 ## Configuration (กำหนดค่าการทำงาน)
 
-กำหนดค่า Options ในไฟล์ `default.json` หรือ `[NODE_ENV].json` ในโฟลเดอร์ config
+กำหนดค่า Options ในไฟล์ `default.json` หรือ `[development|production].json` ในโฟลเดอร์ config
 
 ### Config Options 
 - `apiKey`: (String) คีย์ API
-- `chatfuel`: (Object) ข้อมูล Chatfuel สามารถดูรายละเอียด[ที่นี้](https://docs.chatfuel.com/en/articles/2706667-dashboard-api)
+- `chatfuelBotId`: (String) ดูรายละเอียด[ที่นี้](https://docs.chatfuel.com/en/articles/2706667-dashboard-api)
+- `chatfuelToken`: (String) ดูรายละเอียด[ที่นี้](https://docs.chatfuel.com/en/articles/2706667-dashboard-api)
 - `databaseURI`: (String) URI ฐานข้อมูล Mongodb
 - `databaseOptions`: (Object) Options การเชื่อมต่อ Mongodb 
 - `jsonLogs`: (Boolean) Logger แสดงข้อมูลเป็น JSON
@@ -73,10 +74,10 @@ $ npx md-seed run users
 
 ## Scripts (โค้ดสคริปต์)
 
-### ซิงค์ข้อมูล Chatfuel Bot
+### โหลดข้อมูล
 
 ```bash
-node ./scripts/sync-chatfuel-bot-data.js
+node ./scripts/load-data.js
 ```
 
 ## TODO (สิ่งที่จะทำ)
@@ -84,3 +85,4 @@ node ./scripts/sync-chatfuel-bot-data.js
 - API Docs
 - API Promission User Role
 - API Clase ลบข้อมูลได้หลาย id
+- Validate Configuration

@@ -9,6 +9,6 @@ router.post('/', authorize(), userController.create);
 router.get('/me', authorize(), userController.me);
 router.get('/:id', authorize(), userController.get);
 router.put('/:id', authorize(), userController.update);
-router.delete('/:id', authorize(), userController.delete);
+router.delete('/:id', authorize(), userController.deleteById);
 
 module.exports = router;

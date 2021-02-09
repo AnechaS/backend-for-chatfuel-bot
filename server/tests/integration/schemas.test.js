@@ -2,7 +2,9 @@ const httpStatus = require('http-status');
 const mongoose = require('mongoose');
 const request = require('supertest');
 const config = require('config');
+const { omit } = require('lodash');
 const app = require('../../app');
+const { BLACKLIST_MODELS } = require('../../utils/constants');
 
 let sessionToken;
 
@@ -35,7 +37,8 @@ describe('GET /schemas', () => {
       .expect('Content-Type', /json/)
       .expect(httpStatus.OK)
       .then((res) => {
-        Object.keys(mongoose.models).forEach((modelName, i) => {
+        const models = omit(mongoose.models, BLACKLIST_MODELS);
+        Object.keys(models).forEach((modelName, i) => {
           expect(res.body.results[i].className).toBe(modelName);
         });
       });

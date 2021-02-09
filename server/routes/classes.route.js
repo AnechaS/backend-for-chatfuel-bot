@@ -11,6 +11,6 @@ router.get('/:modelName', authorize(), modelController.find);
 router.post('/:modelName', authorize(), modelController.create);
 router.get('/:modelName/:id', authorize(), modelController.get);
 router.put('/:modelName/:id', authorize(), modelController.update);
-router.delete('/:modelName/:id', authorize(), modelController.delete);
+router.delete('/:modelName/:id', authorize(), modelController.deleteById);
 
 module.exports = router;

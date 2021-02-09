@@ -5,8 +5,8 @@ const config = require('config');
 const moment = require('moment');
 
 const CHATFUEL_HOST = 'https://dashboard.chatfuel.com';
-const CHATFUEL_BOT_ID = config.get('chatfuel.botId');
-const CHATFUEL_API_TOKEN = config.get('chatfuel.token');
+const CHATFUEL_BOT_ID = config.get('chatfuelBotId');
+const CHATFUEL_API_TOKEN = config.get('chatfuelToken');
 
 function request(pathname, options) {
   let qs;

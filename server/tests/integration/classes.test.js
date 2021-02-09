@@ -4,38 +4,44 @@ const httpStatus = require('http-status');
 const config = require('config');
 const app = require('../../app');
 
-mongoose.model('Person', new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      trim: true,
+mongoose.model(
+  'Person',
+  new mongoose.Schema(
+    {
+      name: {
+        type: String,
+        trim: true,
+      },
+      power: {
+        type: Number,
+      },
     },
-    power: {
-      type: Number,
-    },
-  },
-  {
-    timestamps: true,
-  }
-));
+    {
+      timestamps: true,
+    }
+  )
+);
 
-mongoose.model('Message', new mongoose.Schema(
-  {
-    person: {
-      type: String,
-      ref: 'Person',
-      index: true,
-      required: true,
+mongoose.model(
+  'Message',
+  new mongoose.Schema(
+    {
+      person: {
+        type: String,
+        ref: 'Person',
+        index: true,
+        required: true,
+      },
+      text: {
+        type: String,
+        trim: true,
+      },
     },
-    text: {
-      type: String,
-      trim: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
-))
+    {
+      timestamps: true,
+    }
+  )
+);
 
 const User = mongoose.models.User;
 const Session = mongoose.models.Session;
@@ -281,7 +287,7 @@ describe('GET /classes/:modelName', () => {
       });
   });
 
-  test('should report error cless not match', () => {
+  test('should report error class not match', () => {
     return request(app)
       .get('/classes/Test')
       .set('X-Session-Token', sessionToken)

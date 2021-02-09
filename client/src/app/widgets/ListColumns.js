@@ -29,7 +29,7 @@ export default function ListColumns({ columns = [], data = [] }) {
           style={{ paddingLeft: 25, paddingRight: 25 }}
         >
           {columns.map(({ name }) => (
-            <span key={name}>{name}</span>
+            <span key={`header-${name}`}>{name}</span>
           ))}
         </div>
       </div>
@@ -44,8 +44,8 @@ export default function ListColumns({ columns = [], data = [] }) {
               className="kt-widget6__item"
               style={{ paddingLeft: 25, paddingRight: 25 }}
             >
-              {columns.map(({ field }) => (
-                <span key={object[field]}>{object[field]}</span>
+              {columns.map(({ field }, i2) => (
+                <span key={"item-" + (i + 1) + '-' + (i2 + 1)}>{object[field]}</span>
               ))}
             </div>
           ))}

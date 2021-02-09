@@ -10,8 +10,6 @@ import { ReactComponent as UpdateIcon } from "../../../../_metronic/layout/asset
 import { ReactComponent as FilterIcon } from "../../../../_metronic/layout/assets/layout-svg-icons/Filter.svg";
 import { ReactComponent as WriteIcon } from "../../../../_metronic/layout/assets/layout-svg-icons/Write.svg";
 
-// const $ = window.$;
-
 export const Toolbar = ({ children }) => (
   <div className="kt-subheader__toolbar">
     <div className="kt-subheader__wrapper">{children}</div>
@@ -161,11 +159,13 @@ const Filter = ({
         compareType = Filters.Constraints[newConstraint].field;
       }
       let newFilters = filters.slice();
+      // this check has key
       newFilters[index] = {
         field: field,
         constraint: newConstraint,
         compareTo: Filters.DefaultComparisons[compareType],
       };
+
       setFilters(newFilters);
     },
     [filters, schema]
@@ -174,6 +174,7 @@ const Filter = ({
   const onChangeCompareTo = (index, newCompareTo) => {
     setFilters((prevState) => {
       const state = prevState.slice();
+      // this check has key
       state[index].compareTo = newCompareTo;
       return state;
     });
@@ -212,6 +213,7 @@ const Filter = ({
   );
 
   const available = Filters.availableFilters(schema, filters);
+
   return (
     <div
       className="dropdown dropdown-inline"
@@ -356,6 +358,7 @@ export const TableToolbar = ({
   onRefresh,
   onFilterChange,
   onDeleteRows,
+  onDeleteAllRows
 }) => {
   return (
     <Toolbar>
@@ -385,7 +388,7 @@ export const TableToolbar = ({
           <Dropdown.Item onClick={onDeleteRows}>
             Delete these rows
           </Dropdown.Item>
-          <Dropdown.Item>Delete all rows</Dropdown.Item>
+          <Dropdown.Item onClick={onDeleteAllRows}>Delete all rows</Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item>Import data</Dropdown.Item>
           <Dropdown.Item>Export this data</Dropdown.Item>

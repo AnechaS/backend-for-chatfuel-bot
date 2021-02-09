@@ -25,7 +25,6 @@ class Brand extends React.Component {
       >
         <div className="kt-aside__brand-logo">
           <Link to="">
-            {/* <img alt="logo" src={this.props.headerLogo} /> */}
             <Logo />
           </Link>
         </div>

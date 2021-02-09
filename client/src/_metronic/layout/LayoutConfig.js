@@ -1,15 +1,13 @@
-import { toAbsoluteUrl } from "../utils/utils";
+// import { toAbsoluteUrl } from "../utils/utils";
 
 export const initLayoutConfig = {
   // == Base Layout
   self: {
     layout: "fluid",
-    logo: {
+    /* logo: {
       dark: toAbsoluteUrl("/media/logos/logo-light.png"),
       light: toAbsoluteUrl("/media/logos/logo-dark.png"),
-      brand: toAbsoluteUrl("/media/logos/logo-light.png"),
-      green: toAbsoluteUrl("/media/logos/logo-light.png")
-    }
+    } */
   },
   // == Portlet Plugin
   // portlet: {
@@ -21,7 +19,6 @@ export const initLayoutConfig = {
   loader: {
     enabled: true,
     type: "spinner-logo",
-    logo: toAbsoluteUrl("/media/logos/logo-mini-md.png"),
     message: "Please wait..."
   },
   // == Colors for javascript

@@ -16,6 +16,7 @@
     height: auto;
     display: flex;
     width: 100%;
+    background-color: #ffffff;
     background-size: cover;
     background-repeat: no-repeat;
     align-items: stretch;
@@ -38,61 +39,23 @@
     .kt-login__left {
         display: flex;
         flex: 1;
-        width: 50%;
+        // width: 50%;
+        max-width: 600px;
         align-items: center;
         justify-content: center;
-
-        .kt-login__wrapper {
-            display: flex;
-            width: 500px;
-
-            .kt-login__content {
-                text-align: center;
-                padding: 1rem 1.5rem;
-
-                .kt-login__title {
-                    margin: 5rem 0 2rem 0;
-                    color: kt-base-color(label, 3);
-                    font-size: 1.4rem;
-                    font-weight: 500;
-                }
-
-                .kt-login__desc {
-                    color: kt-base-color(label, 2);
-                    font-size: 1rem;
-                }
-
-                .kt-login__actions {
-                    margin: 3.4rem 0 3rem 0;
-                    text-align: center;
-                }
-            }
-        }
-    }
-
-    .kt-login__divider {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        > div {
-            height: 400px;
-            background: #ffffff;
-            width: 30px;
-            box-shadow: -19px 0 35px -7px #F5F5F5;
-        }
     }
 
     // Right Panel
     .kt-login__right {
         display: flex;
         flex: 1;
-        width: 50%;
+        // width: 50%;
         justify-content: center;
         align-items: center;
+        background-color: #f2f3f8;
 
         .kt-login__wrapper {
-            width: 400px;
+            width: 450px;
             padding: 1rem 1.5rem;
 
             .kt-login__head {
@@ -105,10 +68,10 @@
             }
 
             .kt-login__title {
-                text-align: center;
-                font-size: 1.5rem;
-                font-weight: 500;
-                color: kt-base-color(label, 3);
+                text-align: left;
+                font-size: 2rem;
+                font-weight: 600;
+                color: #181c32;
             }
 
             .kt-login__desc {
@@ -119,20 +82,31 @@
             }
 
             .kt-login__form {
-                margin-top: 4rem;
+                margin-top: 2.5rem;
 
                 .form-group {
                     margin: 0;
                     padding: 0;
                 }
 
+                label {
+                    font-size: 1.175rem !important;
+                    color: #181c32 !important;
+                    font-weight: 600 !important;
+                }
+
                 .form-control {
-                    height: 46px;
+                    height: auto !important;
                     border-radius: 0;
                     border: none;
                     border-bottom: 0.07rem solid #ebecf1 !important;
                     padding: 1rem 0;
                     margin-top: 0.1rem;
+                    padding-top: 1.75rem !important;
+                    padding-bottom: 1.75rem !important;
+                    padding-left: 1.5rem !important;
+                    padding-right: 1.5rem !important;
+                    border-radius: .85rem!important;
                     @include kt-input-placeholder(#93959e);
                     &:focus {
                         @include kt-input-placeholder(kt-brand-color());
@@ -210,21 +184,6 @@
             margin: 0 auto;
             padding-top: 2.5rem;
 
-            .kt-login__wrapper {
-                padding-bottom: 0;
-                margin: 0 auto;
-                flex-direction: column;
-
-                .kt-login__contanier {
-                    padding: 1rem;
-                    width: 100%;
-                    margin-top: 3rem;
-                    .kt-login__content {
-                        width: 100%;
-                    }
-                }
-            }
-
             .kt-login__actions {
                 margin: 1rem 0;
             }
@@ -255,22 +214,6 @@
                         }
                     }
                 }
-            }
-        }
-
-        .kt-login__divider {
-            display: flex;
-            padding-top: 0;
-            width: 60%;
-            margin: 5px auto;
-            align-items: center;
-            justify-content: center;
-
-            > div {
-                height: 30px;
-                background: #ffffff;
-                width: 100%;
-                box-shadow: 0 -15px 30px -10px #F5F5F5;
             }
         }
     }

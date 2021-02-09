@@ -24,6 +24,12 @@ body {
   visibility: hidden;
 }
 
+#splash-screen .message {
+  margin-top: 5px;
+  color: #000000;
+  font-size: 14px;
+}
+
 .spinner {
   animation: rotate 2s linear infinite;
   margin-left: calc(100vw - 100%);

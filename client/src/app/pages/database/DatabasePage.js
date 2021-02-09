@@ -10,12 +10,12 @@ import {
   updateDocument,
   removeDocument,
 } from "../../crud/classes.crud";
+import { removeAllDocuments } from "../../crud/purge.crud";
 import KTContent from "../../../_metronic/layout/KtContent";
 import { Portlet, PortletBody } from "../../partials/content/Portlet";
-import TableEdit from "../../partials/content/TableEdit";
-
-// TODO: rename
 import SubHeader from "../../partials/layout/SubHeader";
+import TableEdit from "../../partials/content/TableEdit";
+import ModalConfirmDeleteAllRows from "./ModalConfirmDeleteAllRows";
 
 const buildColumns = (fields = {}, options) => {
   options = defaults(options, {
@@ -35,8 +35,6 @@ class DatabasePage extends Component {
   constructor(props) {
     super(props);
 
-    // this.initialState
-
     this.state = {
       loading: false,
       count: 0,
@@ -47,9 +45,10 @@ class DatabasePage extends Component {
       filters: [],
       selectRows: [],
       skipPageReset: false,
-      schema: undefined,
       columns: [],
       data: [],
+      showConfirmDeleteAllRows: false,
+      schema: undefined,
     };
 
     this._cancel = () => {};
@@ -59,12 +58,14 @@ class DatabasePage extends Component {
     this.createData = this.createData.bind(this);
     this.updateData = this.updateData.bind(this);
     this.deleteData = this.deleteData.bind(this);
+    this.purgeData = this.purgeData.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onChangePaging = this.onChangePaging.bind(this);
     this.onChangePageSize = this.onChangePageSize.bind(this);
     this.onCheckRows = this.onCheckRows.bind(this);
     this.onClickAddRow = this.onClickAddRow.bind(this);
     this.onFilterChange = this.onFilterChange.bind(this);
+    this.onDeleteAllRows = this.onDeleteAllRows.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -269,6 +270,32 @@ class DatabasePage extends Component {
     }
   }
 
+  async purgeData() {
+    try {
+      this.setState({ loading: true, showRowCreate: false });
+      const { schema } = this.state;
+      await removeAllDocuments(schema.className, {
+        cancelToken: new axios.CancelToken((cancel) => {
+          this._cancel = cancel;
+        }),
+      });
+      this.setState({
+        loading: false,
+        count: 0,
+        pageIndex: 0,
+        pageCount: 0,
+        pageSize: 10,
+        filters: [],
+        selectRows: [],
+        data: [],
+        showConfirmDeleteAllRows: false,
+      });
+    } catch (error) {
+      // hander error
+      this.setState({ loading: false });
+    }
+  }
+
   onKeyDown(event) {
     if (event.keyCode === 27) {
       this.setState({ showRowCreate: false });
@@ -307,6 +334,10 @@ class DatabasePage extends Component {
     });
   }
 
+  onDeleteAllRows() {
+    this.setState({ showConfirmDeleteAllRows: true });
+  }
+
   render() {
     const {
       schema,
@@ -320,6 +351,7 @@ class DatabasePage extends Component {
       data,
       skipPageReset,
       showRowCreate,
+      showConfirmDeleteAllRows,
     } = this.state;
 
     const { match, schemas } = this.props;
@@ -350,6 +382,7 @@ class DatabasePage extends Component {
             onAddRow={this.onClickAddRow}
             onDeleteRows={this.deleteData}
             onFilterChange={this.onFilterChange}
+            onDeleteAllRows={this.onDeleteAllRows}
           />
         </SubHeader>
         <KTContent>
@@ -375,6 +408,14 @@ class DatabasePage extends Component {
             </PortletBody>
           </Portlet>
         </KTContent>
+        <ModalConfirmDeleteAllRows
+          show={showConfirmDeleteAllRows}
+          onHide={() => {
+            this.setState({ showConfirmDeleteAllRows: false });
+          }}
+          modelName={schema.className}
+          onConfirmed={this.purgeData}
+        />
       </>
     );
   }

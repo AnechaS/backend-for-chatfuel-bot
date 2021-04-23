@@ -165,21 +165,41 @@ export default function mockStats(mock) {
         ],
         blocks: [
           {
-            name: "export 22 day",
+            name: "Welcome Message",
             value: 364,
           },
           {
-            name: "DAY 12 intro",
+            name: "Game",
             value: 170,
           },
           {
-            name: "Welcome Message",
-            value: 168,
+            name: "Question1",
+            value: 170,
+          },
+          {
+            name: "Question2",
+            value: 170,
+          },
+          {
+            name: "Question3",
+            value: 170,
+          },
+          {
+            name: "Question4",
+            value: 170,
+          },
+          {
+            name: "Question5",
+            value: 170,
+          },
+          {
+            name: "Score",
+            value: 170,
           },
         ],
         "user input": [
           {
-            name: "5",
+            name: "โอเค",
             value: 33,
           },
           {
@@ -187,8 +207,20 @@ export default function mockStats(mock) {
             value: 28,
           },
           {
-            name: "4",
+            name: "ข้อมูลฟันพุ",
             value: 25,
+          },
+          {
+            name: "ขอเบอร์คุณหมอ",
+            value: 10,
+          },
+          {
+            name: "ลูกไม่อยากกินข้าว",
+            value: 3,
+          },
+          {
+            name: "เยี่ยม",
+            value: 3,
           },
         ],
       },

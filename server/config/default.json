@@ -1,4 +1,6 @@
 {
+  "apiKey": "7gnshgw05gxsl",
+  "databaseURI": "mongodb://localhost:27017/mychatbot",
   "port": 3000,
   "logsFolder": "./logs",
   "jsonLogs": true

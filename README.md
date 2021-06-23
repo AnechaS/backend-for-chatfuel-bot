@@ -1,4 +1,4 @@
-# NodeJS backend for Chatfuel Bot
+# Backend for Chatfuel Bot
 Extended report management system for chatfuel
 
 ## Install 

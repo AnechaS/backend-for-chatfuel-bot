@@ -30,7 +30,7 @@ const handleAuthorize = async (req, res, next /* , roles */) => {
     // if (roles.length) {
     //   if (!roles.includes(user.role)) {
     //     return next(
-    //       createError(httpStatus.FORBIDDEN, 'Session token expired.')
+    //       createError(httpStatus.FORBIDDEN)
     //     );
     //   }
     // }
